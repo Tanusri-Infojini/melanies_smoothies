@@ -32,10 +32,6 @@ my_dataframe = session.table(
 # Display fruit options
 # st.dataframe(data=my_dataframe, use_container_width=True)
 
-import requests  
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
-
 # Allow user to select up to 5 ingredients
 ingredients_list = st.multiselect(
     "Choose up to 5 ingredients:",
@@ -72,3 +68,7 @@ if ingredients_list:
             session.sql(my_insert_stmt).collect()
 
             st.success(f'Your Smoothie is ordered, {name_on_order}!', icon="✅")
+
+import requests  
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response)
